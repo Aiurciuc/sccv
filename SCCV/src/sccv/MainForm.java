@@ -39,7 +39,7 @@ public class MainForm extends javax.swing.JFrame {
         fileChooser = new javax.swing.JFileChooser();
         Open = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
-        panel = new javax.swing.JPanel();
+        labelImage = new javax.swing.JLabel();
 
         fileChooser.setDialogTitle("This is my open dialog");
         fileChooser.setFileFilter(new MyCustomFilter());
@@ -60,41 +60,30 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 311, Short.MAX_VALUE)
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 218, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Exit)
-                    .addComponent(Open))
-                .addGap(18, 18, 18)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Open, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Open)
                         .addGap(18, 18, 18)
                         .addComponent(Exit)))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,9 +95,8 @@ public class MainForm extends javax.swing.JFrame {
     if (returnVal == fileChooser.APPROVE_OPTION) {
         File file = fileChooser.getSelectedFile();
         // What to do with the file, e.g. display it in a TextArea
-        ImageIcon image = new ImageIcon(file.toString());
-        JLabel label = new JLabel("",image, JLabel.CENTER);
-        panel.add(label);
+        ImageIcon icon = new ImageIcon(file.getPath());
+        labelImage.setIcon(icon);
     } else {
         System.out.println("File access cancelled by user.");
     }
@@ -158,7 +146,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton Exit;
     private javax.swing.JButton Open;
     private javax.swing.JFileChooser fileChooser;
-    private javax.swing.JPanel panel;
+    private javax.swing.JLabel labelImage;
     // End of variables declaration//GEN-END:variables
 }
  
